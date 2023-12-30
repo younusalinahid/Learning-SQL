@@ -367,25 +367,159 @@ sql_statement
 GO;
 
 
+------SQL DATABASE--------
+
+--SQL CREATE DATABASE Statement
+--The CREATE DATABASE statement is used to create a new SQL database.
+CREATE DATABASE databasename;
 
 
+--The DROP DATABASE statement is used to drop an existing SQL database.
+DROP DATABASE databasename;
 
 
+--The SQL BACKUP DATABASE Statement
+BACKUP DATABASE testDB
+TO DISK = 'D:\backups\testDB.bak'
+WITH DIFFERENTIAL;
+--Syntax
+BACKUP DATABASE databasename
+TO DISK = 'filepath'
+WITH DIFFERENTIAL;
 
 
+--The SQL CREATE TABLE Statement
+CREATE TABLE Persons (
+        PersonID int,
+        LastName varchar(255),
+        FirstName varchar(255),
+        Address varchar(255),
+        City varchar(255)
+);
+--Syntax
+CREATE TABLE table_name (
+                            column1 datatype,
+                            column2 datatype,
+                            column3 datatype,
+    ....
+);
 
 
+--The SQL DROP TABLE Statement
+DROP TABLE table_name;
 
 
+--SQL ALTER TABLE Statement
+--ALTER TABLE - ADD Column, DROP COLUMN, RENAME COLUMN,  ALTER/MODIFY DATATYPE
+ALTER TABLE Customers
+    ADD Email varchar(255);
+--Syntax
+ALTER TABLE table_name
+    ADD column_name datatype;
 
 
+--SQL Create Constraints
+CREATE TABLE table_name (
+                            column1 datatype constraint,
+                            column2 datatype constraint,
+                            column3 datatype constraint,
+    ....
+);
 
 
+--SQL NOT NULL Constraint
+CREATE TABLE Persons (
+                         ID int NOT NULL,
+                         LastName varchar(255) NOT NULL,
+                         FirstName varchar(255) NOT NULL,
+                         Age int
+);
 
 
+--SQL UNIQUE Constraint
+--The UNIQUE constraint ensures that all values in a column are different.
+CREATE TABLE Persons (
+                         ID int NOT NULL,
+                         LastName varchar(255) NOT NULL,
+                         FirstName varchar(255),
+                         Age int,
+                         UNIQUE (ID)
+);
 
 
+--SQL PRIMARY KEY Constraint
+The PRIMARY KEY constraint uniquely identifies each record in a table.
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+);
 
 
+--SQL FOREIGN KEY Constraint
+CREATE TABLE Orders (
+                        OrderID int NOT NULL,
+                        OrderNumber int NOT NULL,
+                        PersonID int,
+                        PRIMARY KEY (OrderID),
+                        FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+);
 
 
+--SQL CHECK Constraint
+CREATE TABLE Persons (
+                         ID int NOT NULL,
+                         LastName varchar(255) NOT NULL,
+                         FirstName varchar(255),
+                         Age int,
+                         CHECK (Age>=18)
+);
+
+
+--SQL DEFAULT on CREATE TABLE
+--The default value will be added to all new records, if no other value is specified.
+CREATE TABLE Persons (
+                         ID int NOT NULL,
+                         LastName varchar(255) NOT NULL,
+                         FirstName varchar(255),
+                         Age int,
+                         City varchar(255) DEFAULT 'Sandnes'
+);
+
+
+--SQL CREATE INDEX Statement
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+
+
+--SQL AUTO INCREMENT
+--Auto-increment allows a unique number to be generated automatically when a new record is inserted into a table.
+CREATE TABLE Persons (
+                         Personid int NOT NULL AUTO_INCREMENT,
+                         LastName varchar(255) NOT NULL,
+                         FirstName varchar(255),
+                         Age int,
+                         PRIMARY KEY (Personid)
+);
+
+
+--SQL Working With Dates
+DATE - format YYYY-MM-DD
+DATETIME - format: YYYY-MM-DD HH:MI:SS
+TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
+YEAR - format YYYY or YY
+
+
+--SQL CREATE VIEW Statement
+--You can add SQL statements and functions to a view and present the data as if the data were coming from one single table.
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+        FROM table_name
+        WHERE condition;
+
+
+--SQL Injection
+--SQL injection is a code injection technique that might destroy your database.
+SELECT UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1;
