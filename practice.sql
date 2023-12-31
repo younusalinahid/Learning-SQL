@@ -523,3 +523,48 @@ SELECT column1, column2, ...
 --SQL Injection
 --SQL injection is a code injection technique that might destroy your database.
 SELECT UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1;
+
+
+--MySQL CONCAT() Function
+--Adds two or more expressions together
+SELECT CONCAT("SQL ", "Tutorial ", "is ", "fun!") AS ConcatenatedString;
+
+
+--MySQL FIND_IN_SET() Function
+--Returns the position of a string within a list of strings
+SELECT FIND_IN_SET("q", "s,q,l");
+
+
+--MySQL INSTR() Function
+--Returns the position of the first occurrence of a string in another string
+SELECT INSTR("W3Schools.com", "3") AS MatchPosition;
+
+
+--MySQL LCASE() Function
+--Converts a string to lower-case
+SELECT LCASE("SQL Tutorial is FUN!");
+
+
+--MySQL LPAD() Function
+--MySQL RPAD() Function
+--The LPAD() function left-pads a string with another string, to a certain length.
+SELECT LPAD("SQL Tutorial", 20, "ABC");
+
+
+--MySQL LTRIM() Function
+--The LTRIM() function removes leading spaces from a string.
+SELECT LTRIM("     SQL Tutorial") AS LeftTrimmedString;
+
+
+--MySQL SUBSTR() Function
+--The SUBSTR() function extracts a substring from a string (starting at any position).
+SELECT SUBSTR("SQL Tutorial", 5, 3) AS ExtractString;
+
+
+--MySQL ABS() Function
+--The ABS() function returns the absolute (positive) value of a number.
+SELECT ABS(-243.5); 243.5
+
+--Learn MySQL Numeric Functions
+--Learn MySQL Date  Functions
+--Learn MySQL Advanced  Functions
